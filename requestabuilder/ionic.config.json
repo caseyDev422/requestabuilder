@@ -1,0 +1,7 @@
+{
+  "name": "request-a-builder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
