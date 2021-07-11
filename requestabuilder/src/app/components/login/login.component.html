@@ -1,3 +1,36 @@
-<p>
-  login works!
-</p>
+
+<ion-app>
+  <ion-grid>
+  <ion-row class="row">
+    <ion-card>
+  <ion-card-header>
+    <ion-card-title color="tertiary" class="title">Login</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form #loginForm="ngForm" (ngSubmit)="submitForm(loginForm.value, loginForm)" >
+      <div class="form-group">
+        <small *ngIf="usernameRef.invalid && usernameRef.touched" class="alert alert-danger" style="padding: 0rem;">
+          Invalid username.
+         </small>
+         <input type="text" required #usernameRef="ngModel" name="username" placeholder="Username" class="form-control" style="margin-bottom: 1rem;" ngModel>
+         
+         
+         <input type="password" required #passwordRef="ngModel" name="password" placeholder="Password" class="form-control" ngModel>
+         <small *ngIf="passwordRef.invalid && passwordRef.touched" class="alert alert-danger" style="padding: 0rem;">
+          Invalid password.
+         </small>
+      </div>
+        <div class="button-group loginBtns" role="group">
+          <ion-button mode="md" [disabled]="!loginForm.valid" type="submit" size="default">Sign In</ion-button>
+          <ion-button mode="md" size="default" (click)=redirectToRegistration(loginForm)>Register</ion-button>
+        </div>
+    </form>
+  </ion-card-content>
+</ion-card>
+  </ion-row>
+  
+</ion-grid>
+</ion-app>
+
+
