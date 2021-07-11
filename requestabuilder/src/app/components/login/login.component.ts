@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Login } from '../../models/loginModel';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +11,30 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { };
-  login = "Login";
-  aBoolean = true;
+  loginInfo: Login;
   
 
   ngOnInit() {
 
   }
 
-  someFunction = () => {
-    console.log('click!!!!!');
-    this.aBoolean = !this.aBoolean;
-    this.router.navigate(['/register']);
+  submitForm(loginDetails: Login, loginForm: NgForm) {
+
+    //temp setup, will need to make certain length reqs for username and password
+    if (loginDetails.username === 'test' && loginDetails.password === 'test') {
+      this.router.navigate(['home']);
+      loginForm.resetForm();
+    }
+    this.loginInfo = loginDetails;
+    console.log(loginDetails);
+    console.log(this.loginInfo);
+    this.loginInfo.username = '';
+    this.loginInfo.password = '';
+  }
+
+  redirectToRegistration(loginForm: NgForm) {
+    this.router.navigate(['register']);
+    loginForm.resetForm();
   }
 
 }
