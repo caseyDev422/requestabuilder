@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Login } from '../../models/loginModel';
+import { Person } from '../../models/Person';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +11,14 @@ import { Login } from '../../models/loginModel';
 export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { };
-  loginInfo: Login;
+  loginInfo: Person;
   
 
   ngOnInit() {
 
   }
 
-  submitForm(loginDetails: Login, loginForm: NgForm) {
+  submitForm(loginDetails: Person, loginForm: NgForm) {
 
     //temp setup, will need to make certain length reqs for username and password
     if (loginDetails.username === 'test' && loginDetails.password === 'test') {

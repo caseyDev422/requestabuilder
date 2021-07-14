@@ -9,8 +9,10 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 
+// **TODO** Implement RouteGuard (AuthGuard)
 const routes: Routes = [
-  {path: '', component: LoginComponent },
+  {path: 'login', component: LoginComponent },
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
   {  path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent},
   { path: 'profile', component: ProfileComponent},
