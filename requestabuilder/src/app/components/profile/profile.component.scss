@@ -1,0 +1,28 @@
+.profilePic {
+    width: 12.5rem;
+    height: auto;
+}
+
+.addIcon {
+    margin-top: 11%;
+    font-size: xx-large;
+    margin-left: 5%;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.container ion-fab-button {
+    position: sticky;
+    top: 48%;
+    left: 59%;
+    transform: translate(-50%, -50%);
+    --ion-color-base: #2866da !important;
+}
+
+// .container ion-fab-button .ion-color-primary {
+//     --ion-color-base: red !important;
+// }

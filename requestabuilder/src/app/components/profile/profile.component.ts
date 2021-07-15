@@ -11,4 +11,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {}
 
+  buttonClick(): void {
+    console.log('clicked!');
+  }
+
 }
