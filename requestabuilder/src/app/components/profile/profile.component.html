@@ -1,3 +1,35 @@
-<p>
-  profile works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+  <ion-grid>
+    <ion-row>
+      <div class="container">
+        <ion-fab-button color="primary"><p class="addIcon">+</p></ion-fab-button>
+        <img style="width: 70%;" src=".\assets\icon\avatar-default-icon.png" alt="profile picture">
+      </div>
+    </ion-row>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-button style="margin-top: 7%;" expand="block">Save</ion-button>
+  </ion-grid>
+
+
