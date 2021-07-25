@@ -1,24 +1,71 @@
-<ion-header>
-  <h1>Home</h1>
-  <img src=".\assets\icon\avatar-default-icon.png" alt="profile picture">
-</ion-header>
 
-<ion-grid style="display: flex; flex-direction: row; justify-content: space-evenly;">
-  <ion-col>
+  <ion-menu side="start" content-id="profileMenu">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-icon style="margin-left: 9rem;" name="hammer-outline"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item routerLink="/login" (click)="toggleMenu()">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
+        <ion-item routerLink="/profile" (click)="toggleMenu()">
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+          <ion-label>Profile</ion-label>
+        </ion-item>
+        <ion-item routerLink="/settings" (click)="toggleMenu()">
+          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          <ion-label>Settings</ion-label>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-icon name="archive" slot="start"></ion-icon>
+          <ion-label>Archived</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="trash" slot="start"></ion-icon>
+          <ion-label>Trash</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="warning" slot="start"></ion-icon>
+          <ion-label>Spam</ion-label>
+        </ion-item> -->
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="profileMenu">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Home</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <div class="imgContainer">
+      <img src=".\assets\icon\avatar-default-icon.png" style="max-width: 18rem;" alt="profile picture">
+    </div>
+
+  <ion-grid style="display: flex; flex-direction: row; justify-content: space-evenly;">
+    <ion-col>
+      <ion-row>
+      <ion-button size="default" class="findBtn" routerLink="/find-job">Find a job</ion-button>
+    </ion-row>
     <ion-row>
-    <ion-button>Find a job</ion-button>
-  </ion-row>
-  <ion-row>
-    <ion-button>Create Jobs</ion-button>
-  </ion-row>
-</ion-col>
-  <ion-col> 
+      <ion-button size="default" routerLink="/create-job">Create job</ion-button>
+    </ion-row>
+  </ion-col>
+    <ion-col> 
+      <ion-row>
+      <ion-button size="default" routerLink="/all-jobs">See jobs</ion-button>
+    </ion-row>
     <ion-row>
-    <ion-button>See jobs</ion-button>
-  </ion-row>
-  <ion-row>
-    <ion-button>My Jobs</ion-button>
-  </ion-row>
-</ion-col>
-</ion-grid>
+      <ion-button size="default" routerLink="/my-jobs">My jobs</ion-button>
+    </ion-row>
+  </ion-col>
+  </ion-grid>
+
+
 

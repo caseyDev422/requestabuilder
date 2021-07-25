@@ -16,6 +16,8 @@ import { CreateJobComponent } from './components/home/create-job/create-job.comp
 import { FindJobComponent } from './components/home/find-job/find-job.component';
 import { SeeJobsComponent } from './components/home/see-jobs/see-jobs.component';
 import { YourJobsComponent } from './components/home/your-jobs/your-jobs.component';
+import { SettingsComponent } from './components/home/settings/settings.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { YourJobsComponent } from './components/home/your-jobs/your-jobs.compone
     CreateJobComponent,
     FindJobComponent,
     SeeJobsComponent,
-    YourJobsComponent
+    YourJobsComponent,
+    SettingsComponent
   ],
   entryComponents: [],
   imports: [
