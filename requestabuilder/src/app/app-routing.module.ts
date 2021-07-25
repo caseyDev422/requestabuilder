@@ -8,18 +8,20 @@ import { YourJobsComponent } from './components/home/your-jobs/your-jobs.compone
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SettingsComponent} from './components/home/settings/settings.component';
 
 // **TODO** Implement RouteGuard (AuthGuard)
 const routes: Routes = [
-  {path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
-  {  path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'find-job', component: FindJobComponent},
   { path: 'create-job', component: CreateJobComponent},
-  { path: 'your-jobs', component: YourJobsComponent},
-  { path: 'all-jobs', component: SeeJobsComponent}
+  { path: 'my-jobs', component: YourJobsComponent},
+  { path: 'all-jobs', component: SeeJobsComponent },
+  { path: 'settings', component: SettingsComponent }
 ];
 @NgModule({
   imports: [
