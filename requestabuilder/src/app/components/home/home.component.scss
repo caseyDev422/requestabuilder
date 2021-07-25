@@ -1,0 +1,26 @@
+ion-grid{
+    margin-top: 40%;
+    ion-col{
+        margin:0 15%;
+    }
+    ion-row {
+        margin: 10% 0;
+    }
+    ion-button {
+        max-width: fit-content;
+        margin: 5% 0;
+        font-size: 20px;
+    }
+}
+
+ion-header{
+    h1 {
+        color:white;
+        text-align: center;
+    }
+ img {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10%;
+  }   
+}
