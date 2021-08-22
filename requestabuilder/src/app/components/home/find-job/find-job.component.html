@@ -2,12 +2,110 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
+      
     </ion-buttons>
     <ion-title>Find</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-range (ionChange)="onChange($event)" min="10" step="10" max="100" pin color="secondary">
-  <ion-icon slot="start" size="small" name="contrast"></ion-icon>
-  <ion-icon slot="end" name="contrast"></ion-icon>
-</ion-range>
+<ion-grid>
+  <ion-row class="rowFlex">
+    <ion-col>
+      <ion-label style="position: relative; top: 40px;">Miles</ion-label>
+    </ion-col>
+      <ion-col style="width: 20rem; margin-left: 5rem;">
+        <ion-range (ionChange)="onChange($event)" min="10" step="10" max="250" pin color="secondary">
+          <ion-icon slot="start" size="small" name="car-outline"></ion-icon>
+          <ion-icon slot="end" name="car-outline"></ion-icon>
+        </ion-range>
+      </ion-col>
+  </ion-row>
+
+  <ion-row class="rowFlex">
+    <ion-col style="padding-top: 8rem;">
+      <ion-label >Price</ion-label>
+    </ion-col>
+    <ion-col style="padding-left: 4rem;">
+      <ion-radio-group style="display: flex; justify-content: center;" (click)="priceSelect($event)">
+        <div class="radioContainer">
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-radio mode="md" value="lowPrice"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon>
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon>         
+          <ion-radio mode="md" value="medPrice"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-radio mode="md" value="highPrice"></ion-radio>
+        </div>
+        <ion-label>Any</ion-label>
+        <ion-radio mode="md" value="anyPrice"></ion-radio>
+      </ion-radio-group>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="rowFlex">
+    <ion-col style="padding-top: 7rem;">
+      <ion-label>Rating</ion-label>
+    </ion-col>
+    <ion-col class="ratingCol">
+      <ion-radio-group style="display: flex; justify-content: center;" (click)="ratingSelect($event)">
+        <div class="radioContainer"> 
+          <ion-label class="ratingNumPosition">1</ion-label>
+          <ion-radio mode="md" value="rating1"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-label class="ratingNumPosition">2</ion-label>       
+          <ion-radio mode="md" value="rating2"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-label class="ratingNumPosition">3</ion-label> 
+          <ion-radio mode="md" value="rating3"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-label class="ratingNumPosition">4</ion-label>
+          <ion-radio mode="md" value="rating4"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-label class="ratingNumPosition">5</ion-label>       
+          <ion-radio mode="md" value="rating5"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-label style="position: relative; right: 3px;">Any</ion-label>
+          <ion-radio mode="md" value="anyRating"></ion-radio>
+        </div>
+      </ion-radio-group>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="rowFlex">
+    <ion-col style="padding-top: 5rem;">
+      <ion-label>Difficulty</ion-label>
+    </ion-col>
+    <ion-col class="difficultyCol">
+      <ion-radio-group style="display: flex; justify-content: center;">
+        <div class="radioContainer">
+        <ion-label>Easy</ion-label>
+        <ion-radio mode="md" value="easy"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-label>Medium</ion-label>
+          <ion-radio mode="md" value="med"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-label>Hard</ion-label>
+          <ion-radio mode="md" value="hard"></ion-radio>
+        </div>
+        <div class="radioContainer">
+          <ion-label>Any</ion-label>
+          <ion-radio mode="md" value="anyDifficulty"></ion-radio>
+        </div>
+      </ion-radio-group>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+

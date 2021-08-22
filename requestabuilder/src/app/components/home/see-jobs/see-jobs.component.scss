@@ -1,0 +1,11 @@
+.filterContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.filterIcon {
+    position: relative;
+    top: 5px;
+    color: #3880ff;
+}

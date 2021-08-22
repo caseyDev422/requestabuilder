@@ -16,4 +16,12 @@ export class FindJobComponent implements OnInit {
     console.log(milesChosen);
   }
 
+  priceSelect(e: any): void {
+    console.log(e.target.value);
+  }
+
+  ratingSelect(e: any): void {
+    console.log(e.target.value);
+  }
+
 }

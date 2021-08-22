@@ -1,7 +1,35 @@
 <!-- One card as a template so for data from db, can just populate with ngFor,
   will also need to implement infinite scroll when getting data
 -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>All Jobs</ion-title>
+    <div class="filterContainer">
+      <ion-label style="padding-left: 18rem; color: #3880ff;">Filter</ion-label>
+      <ion-icon slot="primary" class="filterIcon" name="funnel-outline"></ion-icon>
+    </div>
+    
+  </ion-toolbar>
+  <ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Job Title:</ion-card-subtitle>
+    <ion-card-title>Title goes here</ion-card-title>
+  </ion-card-header>
 
+  <ion-card-content>
+    <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
+    means and something
+    about the price details
+    -->
+    <ion-label>Difficulty: </ion-label>
+    <ion-label>Price: $$$</ion-label>
+  </ion-card-content>
+  <p>Like this job? Click to claim!</p>
+  <ion-button type="button" strong="true" size="small" routerLink="/select-job">Claim Job</ion-button>
+</ion-card>
 <ion-card>
   <ion-card-header>
     <ion-card-subtitle>Job Title:</ion-card-subtitle>
@@ -19,4 +47,41 @@
   <p>Like this job? Click to claim!</p>
   <ion-button type="button" strong="true" size="small" routerLink="/select-job">Claim Job</ion-button>
 </ion-card>
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Job Title:</ion-card-subtitle>
+    <ion-card-title>Title goes here</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
+    means and something
+    about the price details
+    -->
+    <ion-label>Difficulty: </ion-label>
+    <ion-label>Price: $$$</ion-label>
+  </ion-card-content>
+  <p>Like this job? Click to claim!</p>
+  <ion-button type="button" strong="true" size="small" routerLink="/select-job">Claim Job</ion-button>
+</ion-card>
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Job Title:</ion-card-subtitle>
+    <ion-card-title>Title goes here</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
+    means and something
+    about the price details
+    -->
+    <ion-label>Difficulty: </ion-label>
+    <ion-label>Price: $$$</ion-label>
+  </ion-card-content>
+  <p>Like this job? Click to claim!</p>
+  <ion-button type="button" strong="true" size="small" routerLink="/select-job">Claim Job</ion-button>
+</ion-card>
+</ion-header>
+
+
 
