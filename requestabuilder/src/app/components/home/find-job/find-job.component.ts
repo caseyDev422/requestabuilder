@@ -11,4 +11,9 @@ export class FindJobComponent implements OnInit {
 
   ngOnInit() {}
 
+  onChange(e: any): void {
+    const milesChosen = e.target.value;
+    console.log(milesChosen);
+  }
+
 }

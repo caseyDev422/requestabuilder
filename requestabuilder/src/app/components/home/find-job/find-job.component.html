@@ -1,3 +1,13 @@
-<p>
-  find-job works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Find</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-range (ionChange)="onChange($event)" min="10" step="10" max="100" pin color="secondary">
+  <ion-icon slot="start" size="small" name="contrast"></ion-icon>
+  <ion-icon slot="end" name="contrast"></ion-icon>
+</ion-range>
