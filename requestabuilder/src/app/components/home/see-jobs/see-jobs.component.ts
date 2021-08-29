@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { FindJobComponent } from '../find-job/find-job.component';
 
 @Component({
   selector: 'app-see-jobs',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeeJobsComponent implements OnInit {
 
-  constructor() { }
+  constructor( private modalCtrl: ModalController) { }
 
   ngOnInit() {}
+
+  async showModal() {
+    const modal = await this.modalCtrl.create({
+      component: FindJobComponent
+    })
+    await modal.present();
+  }
 
 }
