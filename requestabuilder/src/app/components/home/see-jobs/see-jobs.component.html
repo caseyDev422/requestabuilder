@@ -7,7 +7,7 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-title>All Jobs</ion-title>
-    <div class="filterContainer">
+    <div class="filterContainer" (click)="showModal()">
       <ion-label style="color: #3880ff;">Filter</ion-label>
       <ion-icon slot="primary" class="filterIcon" name="funnel-outline"></ion-icon>
     </div>

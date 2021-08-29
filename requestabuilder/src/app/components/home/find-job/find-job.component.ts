@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-find-job',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindJobComponent implements OnInit {
 
-  constructor() { }
+  constructor( private modalCtrl: ModalController) { }
 
   ngOnInit() {}
+
+  async closeModal() {
+    await this.modalCtrl.dismiss();
+  }
 
   onChange(e: any): void {
     const milesChosen = e.target.value;
