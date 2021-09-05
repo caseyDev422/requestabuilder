@@ -1,4 +1,5 @@
-<!--**TODO** Fix styling for buttons-->
+
+<ion-app>
   <ion-menu side="start" content-id="profileMenu">
     <ion-header>
       <ion-toolbar translucent>
@@ -23,7 +24,7 @@
     </ion-content>
   </ion-menu>
 
-  <div class="ion-page" id="profileMenu">
+  <ion-app class="ion-page" id="profileMenu">
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
@@ -37,20 +38,20 @@
     </div>
 
   <ion-grid style="display: flex; flex-direction: row; justify-content: space-evenly;">
-    <ion-col>
+    <ion-col class="noMargin">
     <ion-row>
       <ion-button size="default" routerLink="/create-job">Create job</ion-button>
     </ion-row>
   </ion-col>
-    <ion-col> 
+    <ion-col class="noMargin"> 
       <ion-row>
       <ion-button size="default" routerLink="/all-jobs">See jobs</ion-button>
     </ion-row>
     <ion-row style="position: relative; right: 100px;">
-      <ion-button size="default" routerLink="/my-jobs">My jobs</ion-button>
+      <ion-button class="myJobsBtn" size="default" routerLink="/my-jobs">My jobs</ion-button>
     </ion-row>
   </ion-col>
   </ion-grid>
-
+</ion-app>
 
 

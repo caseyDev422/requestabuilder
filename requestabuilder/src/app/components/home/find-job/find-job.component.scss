@@ -9,6 +9,32 @@
     top: 5px;
 }
 
+.priceCol {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    top: 25px;
+    left: 47px;
+}
+
+.lowContainer {
+    position: relative;
+    left: 47px;
+    bottom: 20px;
+}
+
+.medContainer {
+    position: relative;
+    left: 93px;
+    bottom: 44px;
+}
+
+.highContainer {
+    position: relative;
+    left: 137px;
+    bottom: 68px;
+}
+
 // aligns the items
 .rowFlex {
     flex-direction: column;

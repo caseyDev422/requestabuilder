@@ -17,7 +17,7 @@
       <ion-col>
         <ion-label style="position: relative; top: 40px;">Miles</ion-label>
       </ion-col>
-        <ion-col style="width: 20rem; margin-left: 5rem;">
+        <ion-col style="margin-left: 2rem; max-width: 16.5rem;">
           <ion-range (ionChange)="onChange($event)" min="10" step="10" max="250" pin color="secondary">
             <ion-icon slot="start" size="small" name="car-outline"></ion-icon>
             <ion-icon slot="end" name="car-outline"></ion-icon>
@@ -28,28 +28,36 @@
     <ion-row class="rowFlex">
       <ion-col style="padding-top: 8rem;">
         <ion-label >Price</ion-label>
+        <div class="lowContainer">
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+        </div>
+        <div class="medContainer">
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+        </div>
+        <div class="highContainer">
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+        </div>
       </ion-col>
-      <ion-col style="padding-left: 4rem;">
-        <ion-radio-group style="display: flex; justify-content: center;" (click)="priceSelect($event)">
-          <div class="radioContainer">
-            <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
-            <ion-radio mode="md" value="lowPrice"></ion-radio>
-          </div>
-          <div class="radioContainer">
-            <ion-icon class="dollarSign" name="logo-usd"></ion-icon>
-            <ion-icon class="dollarSign" name="logo-usd"></ion-icon>         
-            <ion-radio mode="md" value="medPrice"></ion-radio>
-          </div>
-          <div class="radioContainer">
-            <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
-            <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
-            <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
-            <ion-radio mode="md" value="highPrice"></ion-radio>
-          </div>
-          <ion-label>Any</ion-label>
-          <ion-radio mode="md" value="anyPrice"></ion-radio>
-        </ion-radio-group>
-      </ion-col>
+      <ion-row>
+        <ion-col class="priceCol">
+          <ion-radio-group style="display: flex; justify-content: center;" (click)="priceSelect($event)">
+            <div class="radioContainer">
+              <ion-radio mode="md" value="lowPrice"></ion-radio>
+            </div>
+            <div class="radioContainer">       
+              <ion-radio mode="md" value="medPrice"></ion-radio>
+            </div>
+            <div class="radioContainer">
+              <ion-radio mode="md" value="highPrice"></ion-radio>
+            </div>
+            <ion-label>Any</ion-label>
+            <ion-radio mode="md" value="anyPrice"></ion-radio>
+          </ion-radio-group>
+        </ion-col>
+      </ion-row>
     </ion-row>
 
     <ion-row class="rowFlex">
