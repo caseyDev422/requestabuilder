@@ -30,3 +30,14 @@ ion-header{
     height: auto;
     justify-content: center;
 }
+
+.noMargin {
+    margin: 0 !important;
+    position: relative;
+    left: 1px;
+}
+
+.myJobsBtn {
+    position: relative;
+    left: 38px;
+}
