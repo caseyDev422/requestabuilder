@@ -1,5 +1,5 @@
 ion-grid{
-    margin-top: 40%;
+    margin-top: 20%;
     ion-col{
         margin:0 15%;
     }
@@ -23,4 +23,21 @@ ion-header{
     margin-left: 25%;
     margin-top: 10%;
   }   
+}
+
+.imgContainer {
+    display: flex;
+    height: auto;
+    justify-content: center;
+}
+
+.noMargin {
+    margin: 0 !important;
+    position: relative;
+    left: 1px;
+}
+
+.myJobsBtn {
+    position: relative;
+    left: 38px;
 }

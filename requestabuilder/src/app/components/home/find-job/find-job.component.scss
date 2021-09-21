@@ -1,0 +1,68 @@
+.filterContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.filterIcon {
+    position: relative;
+    top: 5px;
+}
+
+.priceCol {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    top: 25px;
+    left: 47px;
+}
+
+.lowContainer {
+    position: relative;
+    left: 47px;
+    bottom: 20px;
+}
+
+.medContainer {
+    position: relative;
+    left: 93px;
+    bottom: 44px;
+}
+
+.highContainer {
+    position: relative;
+    left: 137px;
+    bottom: 68px;
+}
+
+// aligns the items
+.rowFlex {
+    flex-direction: column;
+}
+
+.radioContainer {
+    padding-right: 2rem;
+}
+
+.dollarSign {
+    fill: green;
+}
+
+.ratingCol { 
+    padding-left: 6rem;
+    position: relative;
+    bottom: 2rem;
+    left: 0.8rem
+}
+
+.ratingNumPosition {
+    position: relative;
+    left: 6px;
+}
+
+.difficultyCol {
+    padding-left: 3rem;
+    position: relative;
+    left: 1rem;
+    bottom: .7rem;
+}

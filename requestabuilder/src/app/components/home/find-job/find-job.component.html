@@ -1,3 +1,132 @@
-<p>
-  find-job works!
-</p>
+<!--
+  **TODO** Need to fix styling for responsiveness 
+-->
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+        
+      </ion-buttons>
+      <ion-title>Filter Jobs</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row class="rowFlex">
+      <ion-col>
+        <ion-label style="position: relative; top: 40px;">Miles</ion-label>
+      </ion-col>
+        <ion-col style="margin-left: 2rem; max-width: 16.5rem;">
+          <ion-range (ionChange)="onChange($event)" min="10" step="10" max="250" pin color="secondary">
+            <ion-icon slot="start" size="small" name="car-outline"></ion-icon>
+            <ion-icon slot="end" name="car-outline"></ion-icon>
+          </ion-range>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="rowFlex">
+      <ion-col style="padding-top: 8rem;">
+        <ion-label >Price</ion-label>
+        <div class="lowContainer">
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+        </div>
+        <div class="medContainer">
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+        </div>
+        <div class="highContainer">
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+          <ion-icon class="dollarSign" name="logo-usd"></ion-icon> 
+        </div>
+      </ion-col>
+      <ion-row>
+        <ion-col class="priceCol">
+          <ion-radio-group style="display: flex; justify-content: center;" (click)="priceSelect($event)">
+            <div class="radioContainer">
+              <ion-radio mode="md" value="lowPrice"></ion-radio>
+            </div>
+            <div class="radioContainer">       
+              <ion-radio mode="md" value="medPrice"></ion-radio>
+            </div>
+            <div class="radioContainer">
+              <ion-radio mode="md" value="highPrice"></ion-radio>
+            </div>
+            <ion-label>Any</ion-label>
+            <ion-radio mode="md" value="anyPrice"></ion-radio>
+          </ion-radio-group>
+        </ion-col>
+      </ion-row>
+    </ion-row>
+
+    <ion-row class="rowFlex">
+      <ion-col style="padding-top: 7rem;">
+        <ion-label>Rating</ion-label>
+      </ion-col>
+      <ion-col class="ratingCol">
+        <ion-radio-group style="display: flex; justify-content: center;" (click)="ratingSelect($event)">
+          <div class="radioContainer"> 
+            <ion-label class="ratingNumPosition">1</ion-label>
+            <ion-radio mode="md" value="rating1"></ion-radio>
+          </div>
+          <div class="radioContainer">
+            <ion-label class="ratingNumPosition">2</ion-label>       
+            <ion-radio mode="md" value="rating2"></ion-radio>
+          </div>
+          <div class="radioContainer">
+            <ion-label class="ratingNumPosition">3</ion-label> 
+            <ion-radio mode="md" value="rating3"></ion-radio>
+          </div>
+          <div class="radioContainer">
+            <ion-label class="ratingNumPosition">4</ion-label>
+            <ion-radio mode="md" value="rating4"></ion-radio>
+          </div>
+          <div class="radioContainer">
+            <ion-label class="ratingNumPosition">5</ion-label>       
+            <ion-radio mode="md" value="rating5"></ion-radio>
+          </div>
+          <div class="radioContainer">
+            <ion-label style="position: relative; right: 3px;">Any</ion-label>
+            <ion-radio mode="md" value="anyRating"></ion-radio>
+          </div>
+        </ion-radio-group>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="rowFlex">
+      <ion-col style="padding-top: 5rem;">
+        <ion-label>Difficulty</ion-label>
+      </ion-col>
+      <ion-col class="difficultyCol">
+        <ion-radio-group style="display: flex; justify-content: center;">
+          <div class="radioContainer">
+          <ion-label>Easy</ion-label>
+          <ion-radio mode="md" value="easy"></ion-radio>
+          </div>
+          <div class="radioContainer">
+            <ion-label>Medium</ion-label>
+            <ion-radio mode="md" value="med"></ion-radio>
+          </div>
+          <div class="radioContainer">
+            <ion-label>Hard</ion-label>
+            <ion-radio mode="md" value="hard"></ion-radio>
+          </div>
+          <div class="radioContainer">
+            <ion-label>Any</ion-label>
+            <ion-radio mode="md" value="anyDifficulty"></ion-radio>
+          </div>
+        </ion-radio-group>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button>Filter Results</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button>Clear Filter</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-app>
+
