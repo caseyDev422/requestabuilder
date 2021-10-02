@@ -18,6 +18,7 @@ import { SeeJobsComponent } from './components/home/see-jobs/see-jobs.component'
 import { YourJobsComponent } from './components/home/your-jobs/your-jobs.component';
 import { SettingsComponent } from './components/home/settings/settings.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    FontAwesomeModule
+    HttpClientModule,
+    FontAwesomeModule,
     ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

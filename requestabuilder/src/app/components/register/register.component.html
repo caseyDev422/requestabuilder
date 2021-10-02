@@ -9,34 +9,30 @@
     <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-grid style="display: flex; flex-direction: column; justify-content: space-evenly;">
-  <ion-row>
-    <ion-col><ion-text class="bold">First Name</ion-text></ion-col>
-    <ion-col><input class="inputBorder"></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col class="bold">Last Name</ion-col>
-    <ion-col><input class="inputBorder"></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col class="bold">Address</ion-col>
-    <ion-col><input class="inputBorder"></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col class="bold">Email</ion-col>
-    <ion-col><input class="inputBorder"></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col class="bold">Username</ion-col>
-    <ion-col><input class="inputBorder"></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col class="bold">Password</ion-col>
-    <ion-col><input class="inputBorder"></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col class="bold">Confirm password</ion-col>
-    <ion-col><input class="inputBorder"></ion-col>
-  </ion-row>
+<form style="display: flex; flex-direction: column; justify-content: space-evenly;">
+  <ion-grid >
+    <ion-row>
+    <ion-input type="text" placeholder="First Name" clearInput="true" enterkeyhint="next"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input type="text" placeholder="Last Name" clearInput="true" enterkeyhint="next"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input type="text" placeholder="Address" clearInput="true" enterkeyhint="next"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input type="email" placeholder="Email" clearInput="true" enterkeyhint="next"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input type="text" placeholder="Username" clearInput="true" enterkeyhint="next"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input type="password" placeholder="Password" clearInput="true" enterkeyhint="next"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input type="password" placeholder="Confirm Password" clearInput="true" enterkeyhint="next"></ion-input>
+    </ion-row>
+   
+  </ion-grid>
    <ion-button color="success" expand="block" (click)="signUp()">Sign Up</ion-button>
-</ion-grid>
+</form>

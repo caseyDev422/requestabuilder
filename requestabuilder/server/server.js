@@ -15,6 +15,44 @@ app.get('/', (req, res) => {
     console.log(__dirname);
 })
 
+//will need to add queryParams for filtered jobs
+app.get('/all-jobs', jsonParser, (req, res) => {
+    // to send back all jobs
+})
+
+app.get('/profile', jsonParser, (req, res) => {
+    // to render profile data to screen
+})
+
+app.get('/my-jobs/completed', (req, res) => {
+    // send back jobs with the completion status
+})
+
+app.get('/my-jobs/created', (req, res) => {
+    // send back jobs with the user created
+})
+
+app.get('/my-jobs/saved', (req, res) => {
+    // send back jobs with the saved status
+    // these jobs are the ones that a user takes on
+})
+
+app.post('select-job', (req, res) => {
+    // accept request to set job to selected and send back verification
+})
+
+app.post('/profile', jsonParser, (req, res) => {
+    //if wanting to change profile data
+})
+
+app.post('/create-job', (req, res) => {
+    //take req of job created and send back verification 
+})
+
+app.post('/register', (req, res) => {
+    console.log(req.body);
+})
+
 app.post('/login', jsonParser, (req, res) => {
     console.log(req.body.username);
     console.log(req.body.password);
