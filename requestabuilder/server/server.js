@@ -45,8 +45,14 @@ app.post('/profile', jsonParser, (req, res) => {
     //if wanting to change profile data
 })
 
-app.post('/create-job', (req, res) => {
-    //take req of job created and send back verification 
+app.post('/create-job', jsonParser, (req, res) => {
+    console.log(req.body);
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({
+        message: 'Successfully created job',
+        statusCode: 200
+    }))
 })
 
 app.post('/register', jsonParser, (req, res) => {
