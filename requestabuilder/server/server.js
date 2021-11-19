@@ -49,8 +49,14 @@ app.post('/create-job', (req, res) => {
     //take req of job created and send back verification 
 })
 
-app.post('/register', (req, res) => {
+app.post('/register', jsonParser, (req, res) => {
     console.log(req.body);
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({
+        message: "Successfully Registered",
+        statusCode: 200
+    }))
 })
 
 app.post('/login', jsonParser, (req, res) => {
