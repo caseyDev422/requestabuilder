@@ -1,14 +1,29 @@
 const express = require("express")
 const router = express.Router()
+const User = require('./users-model')
 
 
 router.get("/test-user", (req, res) => {
     res.send("testing the user router")
 })
 
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res, next) => {
+   const newUser = new User(req.body);
+    console.log(newUser);
+
+    try {
+        await newUser.save();
+        res.status(200).json(
+            { 
+                message: "Success!",
+                user: newUser
+            }
+        )
+    } catch (error) {
+        next(error)
+    }
     console.log(req.body);
-    res.status(200).json({ message: "Success!"})
+    
 })
 
 router.post('/login', (req, res) => {
