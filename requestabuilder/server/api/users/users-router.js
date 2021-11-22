@@ -23,18 +23,17 @@ router.post('/register', async (req, res, next) => {
         next(error)
     }
     console.log(req.body);
-    
-})
+});
 
 router.post('/login', (req, res) => {
     console.log(req.body.username);
     console.log(req.body.password);
     res.status(200).json({ message: 'Welcome!'})
-})
+});
 
 router.post('/profile', (req, res) => {
     //if wanting to change profile data
-})
+});
 
 
 
