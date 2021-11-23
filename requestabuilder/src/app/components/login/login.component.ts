@@ -21,8 +21,6 @@ export class LoginComponent implements OnInit {
 
   submitForm(loginDetails: Person, loginForm: NgForm) {
 
-    //temp setup, will need to make certain length reqs for username and password
-    if (loginDetails.username === 'test' && loginDetails.password === 'test') {
       const login = {
         username: loginDetails.username,
         password: loginDetails.password
@@ -36,7 +34,7 @@ export class LoginComponent implements OnInit {
       });
       this.router.navigate(['home']);
       loginForm.resetForm();
-    }
+    
     this.loginInfo = loginDetails;
     console.log(loginDetails);
     console.log(this.loginInfo);
