@@ -1,9 +1,33 @@
 import { Injectable } from '@angular/core';
+import { Person } from './../models/Person.model';
+import { Job } from './../models/Job.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataOutputService {
+ jobs: Job[] | [];
 
-  constructor() { }
+ // sets default value of Observable to ''
+ private retrieveUserName$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+ constructor() { }
+
+ getName(): Observable<string> {
+  return this.retrieveUserName$.asObservable();
+}
+
+setName(name: string) {
+  this.retrieveUserName$.next(name);
+}
+
+  setJobData(jobs: Job[] | []): void {
+    console.log('jobs being set', jobs);
+    this.jobs = jobs;
+  }
+
+  getJobData(): Job[] | [] {
+    return this.jobs;
+  }
 }

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Person } from '../../models/Person.model';
 import { ApiServiceService } from './../../services/api-service.service';
+import { DataOutputService } from './../../services/data-output.service';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +12,13 @@ import { ApiServiceService } from './../../services/api-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private api: ApiServiceService) { };
+  constructor(private router: Router, private api: ApiServiceService, private output: DataOutputService) { };
   loginInfo: Person;
   
 
   ngOnInit() {
-
   }
-
+  
   submitForm(loginDetails: Person, loginForm: NgForm) {
 
       const login = {
@@ -29,17 +29,23 @@ export class LoginComponent implements OnInit {
       this.api.checkCredentials(login).subscribe((data) => {
         console.log('success');
         console.log('data', data);
+
+       this.output.setName(data.name);
+        this.output.setJobData(data.jobs);
+        this.router.navigate(['home']);
+         
       }),(error => {
+        //show test message
         console.error('not able to send login creds');
       });
-      this.router.navigate(['home']);
+     
       loginForm.resetForm();
     
-    this.loginInfo = loginDetails;
-    console.log(loginDetails);
-    console.log(this.loginInfo);
-    this.loginInfo.username = '';
-    this.loginInfo.password = '';
+    // this.loginInfo = loginDetails;
+    // console.log(loginDetails);
+    // console.log(this.loginInfo);
+    // this.loginInfo.username = '';
+    // this.loginInfo.password = '';
   }
 
   redirectToRegistration(loginForm: NgForm) {

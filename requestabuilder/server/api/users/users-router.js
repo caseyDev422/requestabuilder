@@ -33,9 +33,9 @@ router.post("/login", async (req, res) => {
   const token = tokenBuilder(req.body)
   const validUser = brcrypt.compareSync(password, user.password)
   if(validUser){
-      res.status(200).json({ message: `Welcome back ${user.userName}., token: ${token}`})
+      res.status(200).json({ message: `Welcome back ${user.userName}.`, token: token, jobs: user.associatedJobs, name: user.userName})
   } else {
-      res.status(401).json({ message: "Invalid Credientials!"})
+      res.status(401).json({ message: "Invalid Credentials!"})
   }
 });
 

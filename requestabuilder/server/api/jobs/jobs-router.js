@@ -17,7 +17,7 @@ router.get(':user_name/my-jobs/completed', (req, res) => {
     // send back jobs with the completion status
 })
 
-router.get(':user_name/my-jobs/created', (req, res) => {
+router.post(':user_name/my-jobs/created', (req, res) => {
     // send back jobs with the user created
 })
 

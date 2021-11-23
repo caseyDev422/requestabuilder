@@ -4,6 +4,7 @@ import { Job } from 'src/app/models/Job.model';
 import { ApiServiceService } from './../../../services/api-service.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { DataOutputService } from './../../../services/data-output.service';
 
 @Component({
   selector: 'app-create-job',
@@ -14,16 +15,20 @@ export class CreateJobComponent implements OnInit {
   newJob: Job;
   difficulty: string;
 
-  constructor(private api: ApiServiceService, private router: Router) { }
+  constructor(private api: ApiServiceService, private router: Router, private output: DataOutputService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   createJob(newJobForm: NgForm) {
+
     this.newJob = newJobForm.value;
     this.newJob.difficulty = this.difficulty;
+    this.newJob.created = true;
     console.log(newJobForm.value);
     console.log(this.difficulty);
     console.log(this.newJob);
+ 
     this.api.createNewJob(this.newJob).subscribe((data: any) => {
       console.log(data);
     });
