@@ -6,5 +6,6 @@ export interface Job {
     description: string;
     completed?: boolean;
     created?: boolean;
+    createdBy: string;
     saved?: boolean;
 }
