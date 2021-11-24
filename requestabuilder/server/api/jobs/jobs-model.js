@@ -2,31 +2,31 @@ const mongoose = require('mongoose');
 
 const JobSchema = new mongoose.Schema({
     title: {
-        type: string,
+        type: String,
         required: true
     },
     price: {
-        type: string,
+        type: String,
         required: true
     },
     difficulty: {
-        type: string,
+        type: String,
         required: true
     },
-    jobDescription: {
-        type: string,
+    description: {
+        type: String,
         required: false
     },
     completed: {
-        type: boolean,
+        type: Boolean,
         required: false
     },
     created: {
-        type: boolean,
+        type: Boolean,
         required: false
     },
     saved: {
-        type: boolean,
+        type: Boolean,
         required: false
     },
 });
