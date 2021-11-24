@@ -6,4 +6,21 @@
 
 <ion-content>
 
+
+<ion-card *ngFor="let job of createdJobs">
+  <ion-card-header>
+    <ion-card-title>{{job.title}}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
+    means and something
+    about the price details
+    -->
+    <ion-label>{{job.difficulty}}</ion-label>
+    <ion-label>Price: $ {{job.price}}</ion-label>
+  </ion-card-content>
+  <p>{{job.description}}</p>
+</ion-card>
+
 </ion-content>
