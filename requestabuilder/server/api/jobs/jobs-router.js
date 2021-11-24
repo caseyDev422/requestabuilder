@@ -5,7 +5,7 @@ const Job = require("./jobs-model")
 
 
 //will need to add queryParams for filtered jobs
-router.get('/:user_name/all-jobs', (req, res) => {
+router.get('/all-jobs', (req, res) => {
     // to send back all jobs
     res.send("testing jobs router")
 
@@ -38,12 +38,20 @@ router.post('/:user_name/create-job', async (req, res, next) => {
     console.log(user)
     const newJob = new Job(req.body)
     user.associatedJobs.push(newJob)
+    
+    try {
+        newJob.save()
+    } catch (error) {
+        next(error)
+    }
+    
     try {
         console.log(user.associatedJobs)
         await user.updateOne({ associatedJobs: user.associatedJobs })
     } catch (error) {
         next(error)
     }
+    
 })
 
 module.exports = router
