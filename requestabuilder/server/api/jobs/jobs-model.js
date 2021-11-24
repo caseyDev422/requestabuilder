@@ -29,6 +29,10 @@ const JobSchema = new mongoose.Schema({
         type: Boolean,
         required: false
     },
+    createdBy: {
+        type: String,
+        required: true
+    }
 });
 
 const Job = mongoose.model('Job', JobSchema);

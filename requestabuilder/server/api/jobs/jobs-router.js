@@ -38,6 +38,7 @@ router.post('/:user_name/create-job', async (req, res, next) => {
     console.log(user)
     const newJob = new Job(req.body)
     user.associatedJobs.push(newJob)
+    newJob.createdBy = req.params.user_name
     
     try {
         newJob.save()
