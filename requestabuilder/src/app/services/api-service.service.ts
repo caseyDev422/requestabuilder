@@ -46,6 +46,11 @@ export class ApiServiceService {
     return this.http.get(url);
   }
 
+  getAllJobs(): Observable<any> {
+    const url = environment.apiUrl + 'all-jobs';
+    return this.http.get(url);
+  }
+
   getDefaultEndpoint = () => {
     let userName = this.getUserName();
     return userName + '/my-jobs/'
