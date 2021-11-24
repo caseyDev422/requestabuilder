@@ -1,18 +1,15 @@
-
-  <!-- One card as a template so for data from db, can just populate with ngFor,
-  will also need to implement infinite scroll when getting data
--->
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
     <ion-title>Created</ion-title>
   </ion-toolbar>
-  <ion-card>
+</ion-header>
+
+<ion-content>
+
+
+<ion-card *ngFor="let job of createdJobs">
   <ion-card-header>
-    <ion-card-subtitle>Job Title:</ion-card-subtitle>
-    <ion-card-title>Title goes here</ion-card-title>
+    <ion-card-title>{{job.title}}</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
@@ -20,9 +17,10 @@
     means and something
     about the price details
     -->
-    <ion-label>Difficulty: </ion-label>
-    <ion-label>Price: $$$</ion-label>
+    <ion-label>{{job.difficulty}}</ion-label>
+    <ion-label>Price: $ {{job.price}}</ion-label>
   </ion-card-content>
-  <p>Like this job? Click to claim!</p>
+  <p>{{job.description}}</p>
 </ion-card>
-</ion-header>
+
+</ion-content>

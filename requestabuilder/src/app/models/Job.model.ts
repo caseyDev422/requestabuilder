@@ -3,7 +3,7 @@ export interface Job {
     title: string;
     price: string;
     difficulty: string;
-    jobDescription: string;
+    description: string;
     completed?: boolean;
     created?: boolean;
     saved?: boolean;

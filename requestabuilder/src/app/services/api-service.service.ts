@@ -34,7 +34,7 @@ export class ApiServiceService {
   createNewJob(job: Job): Observable<any> {
 
     this.userName = this.getUserName();
-    const url = environment.apiUrl +this.userName + 'created';
+    const url = environment.apiUrl +this.userName + '/create-job';
     console.log(url);
     console.log(job);
     return this.http.post(url, job, {responseType: 'json'});
