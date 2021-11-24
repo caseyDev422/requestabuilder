@@ -5,9 +5,10 @@ const Job = require("./jobs-model")
 
 
 //will need to add queryParams for filtered jobs
-router.get('/all-jobs', (req, res) => {
+router.get('/all-jobs', async(req, res) => {
     // to send back all jobs
-    res.send("testing jobs router")
+    const jobs = await Job.find()
+    res.status(200).json(jobs)
 
 })
 
