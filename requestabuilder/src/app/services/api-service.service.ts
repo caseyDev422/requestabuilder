@@ -11,8 +11,8 @@ import { DataOutputService } from './data-output.service';
 })
 export class ApiServiceService {
  defaultEndpoint: any;
- userName: string;
-
+  userName: string;
+  
   constructor(private http: HttpClient, private output: DataOutputService) {
 
   }
