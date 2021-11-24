@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Job } from './../../../../models/Job.model';
 
 @Component({
   selector: 'app-created',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./created.page.scss'],
 })
 export class CreatedPage implements OnInit {
+  createdJobs: Job[];
 
   constructor() { }
 

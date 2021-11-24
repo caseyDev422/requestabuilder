@@ -11,6 +11,7 @@ import { DataOutputService } from './data-output.service';
 })
 export class ApiServiceService {
  defaultEndpoint: any;
+ userName: string;
 
   constructor(private http: HttpClient, private output: DataOutputService) {
 
@@ -31,19 +32,30 @@ export class ApiServiceService {
   }
 
   createNewJob(job: Job): Observable<any> {
-    this.defaultEndpoint = this.getDefaultEndpoint();
-    const url = environment.apiUrl +this.defaultEndpoint + 'created';
+
+    this.userName = this.getUserName();
+    const url = environment.apiUrl +this.userName + 'created';
     console.log(url);
     console.log(job);
     return this.http.post(url, job, {responseType: 'json'});
   }
 
+  getCreatedJobs(): Observable<any> {
+    this.defaultEndpoint = this.getDefaultEndpoint();
+    const url = environment.apiUrl + this.defaultEndpoint + 'created';
+    return this.http.get(url);
+  }
+
   getDefaultEndpoint = () => {
-    let userName = ''
+    let userName = this.getUserName();
+    return userName + '/my-jobs/'
+  }
+
+  getUserName = () => {
+    let userName = '';
     this.output.getName().subscribe((name: string) => {
-      console.log('NAME', name);
       userName = name;
     }).unsubscribe();
-    return userName + '/my-jobs/'
+    return userName;
   }
 }
