@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Job } from 'src/app/models/Job.model';
 import { FindJobComponent } from '../find-job/find-job.component';
 import { ApiServiceService } from './../../../services/api-service.service';
+import { DataOutputService } from './../../../services/data-output.service';
 
 @Component({
   selector: 'app-see-jobs',
@@ -12,7 +13,11 @@ import { ApiServiceService } from './../../../services/api-service.service';
 export class SeeJobsComponent implements OnInit {
   allJobs: Job[];
 
-  constructor( private modalCtrl: ModalController, private api: ApiServiceService) { }
+  constructor( 
+    private modalCtrl: ModalController, 
+    private api: ApiServiceService, 
+    private output: DataOutputService
+    ) { }
 
   ngOnInit() {
     this.api.getAllJobs().subscribe((jobs: Job[]) => {
@@ -26,6 +31,12 @@ export class SeeJobsComponent implements OnInit {
       component: FindJobComponent
     })
     await modal.present();
+  }
+
+  selectedJob(job: Job) {
+    console.log('JOB SELECTED', job);
+    this.output.setSelectedJob(job);
+
   }
 
 }

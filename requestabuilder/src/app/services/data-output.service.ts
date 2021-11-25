@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class DataOutputService {
  jobs: Job[] | [];
+ jobSelected: Job;
 
  // sets default value of Observable to ''
  private retrieveUserName$: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -29,5 +30,13 @@ setName(name: string) {
 
   getJobData(): Job[] | [] {
     return this.jobs;
+  }
+
+  setSelectedJob(job: Job): void {
+    this.jobSelected = job;
+  }
+
+  getSelectedJob(): Job {
+    return this.jobSelected;
   }
 }
