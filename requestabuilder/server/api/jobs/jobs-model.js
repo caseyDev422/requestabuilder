@@ -32,6 +32,10 @@ const JobSchema = new mongoose.Schema({
     createdBy: {
         type: String,
         required: true
+    },
+    claimedJob: {
+        type: Boolean,
+        required: false
     }
 });
 
