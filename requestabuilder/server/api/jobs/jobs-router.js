@@ -55,5 +55,12 @@ router.post('/:user_name/create-job', async (req, res, next) => {
     }
     
 })
+router.put(":user_name/:job_id/update-job", async (req, res, next) => {
+    if(req.url === '/select-job'){
+     await Job.findByIdAndUpdate({_id: req.params.job_id}, {clamiedBy: req.body.clamiedBy})   
+    }
+    
+
+})
 
 module.exports = router
