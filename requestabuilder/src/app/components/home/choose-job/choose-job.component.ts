@@ -21,7 +21,7 @@ export class ChooseJobComponent implements OnInit {
   claimJob(): void {
     this.jobSelected.claimedJob = true;
     this.api.claimJob(this.jobSelected).subscribe(() => {
-      this.route.navigate(['home'])
+      this.route.navigate(['/home'])
     });
   }
 

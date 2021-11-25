@@ -52,9 +52,8 @@ export class ApiServiceService {
   }
 
   claimJob(job: Job): Observable<any> {
-    this.userName = this.getUserName();
-    const url = environment.apiUrl + this.userName + '/' + job.jobId + '/' + 'update-job';
-    return this.http.put(url, job);
+    const url = environment.apiUrl + job.createdBy + '/' + job._id+ '/' + 'select-job';
+    return this.http.post(url, job);
   }
 
   getDefaultEndpoint = () => {
