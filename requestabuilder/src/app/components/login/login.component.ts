@@ -14,9 +14,16 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private api: ApiServiceService, private output: DataOutputService) { };
   loginInfo: Person;
+  message: any;
   
 
   ngOnInit() {
+  }
+
+  onInput() {
+   if (this.message) {
+    this.message = undefined;
+   }
   }
   
   submitForm(loginDetails: Person, loginForm: NgForm) {
@@ -28,16 +35,18 @@ export class LoginComponent implements OnInit {
       console.log('LOGIN', login);
       this.api.checkCredentials(login).subscribe((data) => {
         console.log('success');
-        console.log('data', data);
+        if(data.message) {
+          this.router.navigate(['login'])
+          this.message = data.message;
+        } else {
+          this.output.setName(data.name);
+          this.output.setJobData(data.jobs);
+          this.router.navigate(['home']);
+        }
 
-       this.output.setName(data.name);
-        this.output.setJobData(data.jobs);
-        this.router.navigate(['home']);
+       
          
-      }),(error => {
-        //show test message
-        console.error('not able to send login creds');
-      });
+      })
      
       loginForm.resetForm();
     

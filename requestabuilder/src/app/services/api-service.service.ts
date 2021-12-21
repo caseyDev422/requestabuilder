@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Person } from './../models/Person.model';
@@ -21,7 +22,16 @@ export class ApiServiceService {
     const url = environment.apiUrl + 'login';
     
     console.log(data);
-    return this.http.post(url, data, {responseType: 'json'});
+    return this.http.post(url, data, {responseType: 'json'})
+    .pipe(
+      catchError(error => {
+        return of(error.error)
+      })
+    )
+  }
+
+  handleError(error: Error) {
+    return Observable.throw(error);
   }
 
   createNewUser(data: Person): Observable<any> {
