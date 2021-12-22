@@ -35,10 +35,11 @@ export class LoginComponent implements OnInit {
       console.log('LOGIN', login);
       this.api.checkCredentials(login).subscribe((data) => {
         console.log('success');
-        if(data.message) {
+        if(data.message === 'Invalid Credentials. Try again or register') {
           this.router.navigate(['login'])
           this.message = data.message;
         } else {
+          console.log(data);
           this.output.setName(data.name);
           this.output.setJobData(data.jobs);
           this.router.navigate(['home']);

@@ -32,18 +32,20 @@ router.post("/login", async (req, res) => {
   const { password } = req.body;
   const token = tokenBuilder(req.body);
   try {
-    const validUser = bcrypt.compareSync(password, user.password);
+    bcrypt.compareSync(password, user.password);
+    res.status(200).json({ message: `Welcome back ${user.userName}.`, token: token, jobs: user.associatedJobs, name: user.userName})
   } catch (error) {
-    res.status(400).json({ message: "Error processing login. Try again or register"})
+    
+    res.status(401).json({ message: "Invalid Credentials. Try again or register"})
   }
   
-  if(validUser){
-      res.status(200).json({ message: `Welcome back ${user.userName}.`, token: token, jobs: user.associatedJobs, name: user.userName})
-  } else if (user.username == 'undefined' || user.password == 'undefined') {
-    res.status(401).json({ message: "Invalid Credentials!"})
-  } else {
-    res.status(400).json({ message: "Error processing login. Try again or register"})
-  }
+  // if(validUser){
+  //     res.status(200).json({ message: `Welcome back ${user.userName}.`, token: token, jobs: user.associatedJobs, name: user.userName})
+  // } else if (user.username == 'undefined' || user.password == 'undefined') {
+  //   res.status(401).json({ message: "Invalid Credentials!"})
+  // } else {
+  //   res.status(400).json({ message: "Error processing login. Try again or register"})
+  // }
 });
 
 router.post("/profile", (req, res) => {

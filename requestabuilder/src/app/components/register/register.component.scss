@@ -16,3 +16,15 @@ ion-input {
     font-weight: bold;
 }
 
+.form {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-evenly; 
+    padding-bottom: 9rem;
+}
+
+.signUpBtn {
+    position: relative;
+    top: 9rem;
+}
+
