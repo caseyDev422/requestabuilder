@@ -19,7 +19,7 @@
 
 <ion-content>
   <div *ngFor="let job of allJobs">
-    <ion-card *ngIf="!job.claimedJob">
+    <ion-card *ngIf="!job.saved">
       <ion-card-header>
         <ion-card-subtitle>Created By: {{job.createdBy}}</ion-card-subtitle>
         <ion-card-title>{{job.title}}</ion-card-title>
