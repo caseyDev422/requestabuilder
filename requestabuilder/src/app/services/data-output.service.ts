@@ -10,18 +10,7 @@ export class DataOutputService {
  jobs: Job[] | [];
  jobSelected: Job;
 
- // sets default value of Observable to ''
- private retrieveUserName$: BehaviorSubject<string> = new BehaviorSubject<string>('');
-
  constructor() { }
-
- getName(): Observable<string> {
-  return this.retrieveUserName$.asObservable();
-}
-
-setName(name: string) {
-  this.retrieveUserName$.next(name);
-}
 
   setJobData(jobs: Job[] | []): void {
     console.log('jobs being set', jobs);

@@ -73,9 +73,7 @@ export class ApiServiceService {
 
   getUserName = () => {
     let userName = '';
-    this.output.getName().subscribe((name: string) => {
-      userName = name;
-    }).unsubscribe();
+    userName = localStorage.getItem('user');
     return userName;
   }
 }

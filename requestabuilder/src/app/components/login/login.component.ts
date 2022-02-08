@@ -38,24 +38,17 @@ export class LoginComponent implements OnInit {
         if(data.message === 'Invalid Credentials. Try again or register') {
           this.router.navigate(['login'])
           this.message = data.message;
+          loginForm.resetForm();
+
         } else {
           console.log(data);
-          this.output.setName(data.name);
+          localStorage.setItem('user', data.name);
           this.output.setJobData(data.jobs);
           this.router.navigate(['home']);
         }
-
-       
-         
-      })
+      });
      
       loginForm.resetForm();
-    
-    // this.loginInfo = loginDetails;
-    // console.log(loginDetails);
-    // console.log(this.loginInfo);
-    // this.loginInfo.username = '';
-    // this.loginInfo.password = '';
   }
 
   redirectToRegistration(loginForm: NgForm) {
