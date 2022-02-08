@@ -9,30 +9,30 @@
     <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
-<form style="display: flex; flex-direction: column; justify-content: space-evenly;">
+<form #registrationForm="ngForm" (ngSubmit)="signUp(registrationForm)" class="form">
   <ion-grid >
     <ion-row>
-    <ion-input type="text" placeholder="First Name" clearInput="true" enterkeyhint="next"></ion-input>
+    <ion-input type="text" placeholder="First Name" name="firstName" ngModel #firstName="ngModel" clearInput="true" enterkeyhint="next"></ion-input>
     </ion-row>
     <ion-row>
-      <ion-input type="text" placeholder="Last Name" clearInput="true" enterkeyhint="next"></ion-input>
+      <ion-input type="text" placeholder="Last Name" name="lastName" ngModel #lastName="ngModel" clearInput="true" enterkeyhint="next"></ion-input>
     </ion-row>
     <ion-row>
-      <ion-input type="text" placeholder="Address" clearInput="true" enterkeyhint="next"></ion-input>
+      <ion-input type="text" placeholder="Address" clearInput="true" name="address" ngModel #address="ngModel" enterkeyhint="next"></ion-input>
     </ion-row>
     <ion-row>
-      <ion-input type="email" placeholder="Email" clearInput="true" enterkeyhint="next"></ion-input>
+      <ion-input type="email" placeholder="Email" clearInput="true" name="email" ngModel #email="ngModel" enterkeyhint="next"></ion-input>
     </ion-row>
     <ion-row>
-      <ion-input type="text" placeholder="Username" clearInput="true" enterkeyhint="next"></ion-input>
+      <ion-input type="text" placeholder="Username" clearInput="true" name="userName" ngModel #userName="ngModel" enterkeyhint="next"></ion-input>
     </ion-row>
     <ion-row>
-      <ion-input type="password" placeholder="Password" clearInput="true" enterkeyhint="next"></ion-input>
+      <ion-input type="password" placeholder="Password" clearInput="true" name="password" ngModel #password="ngModel" enterkeyhint="next"></ion-input>
     </ion-row>
     <ion-row>
       <ion-input type="password" placeholder="Confirm Password" clearInput="true" enterkeyhint="next"></ion-input>
     </ion-row>
    
   </ion-grid>
-   <ion-button color="success" expand="block" (click)="signUp()">Sign Up</ion-button>
+   <ion-button class="signUpBtn" color="success" type="submit" expand="block">Sign Up</ion-button>
 </form>

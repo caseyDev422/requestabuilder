@@ -6,10 +6,10 @@
     <ion-title>Create new job</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<form #newJobForm="ngForm" (ngSubmit)="createJob(newJobForm)">
 <ion-item>
   <ion-label position="floating">Job Title</ion-label>
-  <ion-input autocorrect="on"></ion-input>
+  <ion-input autocorrect="on" name="title" ngModel #title="ngModel"></ion-input>
 </ion-item>
 
 <!-- Instead of using input, could maybe use an ion-range for choosing price
@@ -17,7 +17,7 @@
 -->
 <ion-item>
   <ion-label position="floating">Price</ion-label>
-  <ion-input  type="number" autocorrect="on"></ion-input>
+  <ion-input  type="number" autocorrect="on" name="price" ngModel #price="ngModel"></ion-input>
 </ion-item>
 
 <ion-list>
@@ -28,17 +28,17 @@
 
     <ion-item>
       <ion-label>Easy</ion-label>
-      <ion-radio color="success" slot="start" value="easy"></ion-radio>
+      <ion-radio color="success" slot="start" (ionFocus)="checkDifficulty(1)" value="easy"></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label>Medium</ion-label>
-      <ion-radio color="warning" slot="start" value="medium"></ion-radio>
+      <ion-radio color="warning" slot="start" (ionFocus)="checkDifficulty(2)" value="medium"></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label>Hard</ion-label>
-      <ion-radio color="danger" slot="start" value="hard"></ion-radio>
+      <ion-radio color="danger" slot="start" (ionFocus)="checkDifficulty(3)" value="hard"></ion-radio>
     </ion-item>
   </ion-radio-group>
 </ion-list>
@@ -46,10 +46,11 @@
 <ion-item>
   <ion-label position="floating">Description</ion-label>
   <ion-textarea maxlength=1000 enterkeyhint="done" autocorrect="on" autocapitalize="sentences" 
-  placeholder="Enter any important details of the job"></ion-textarea>
+  placeholder="Enter any important details of the job" name="description" ngModel #description="ngModel"></ion-textarea>
 </ion-item>
 
 <!-- *TODO* Add a toast message to show success or failure of creating job and have an ion-spinner when adding job to DB, 
   easiest way for spinner will prbly be to
 implement in ts file, will need to change button type to submit for form w/ ngSubmit reference login comp -->
-  <ion-button type="button" expand="block" color="success">Create</ion-button>
+  <ion-button type="button" expand="block" color="success" type="submit">Create</ion-button>
+</form>

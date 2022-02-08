@@ -1,10 +1,12 @@
 export interface Job {
-     jobId: string; 
+    _id: string; 
     title: string;
     price: string;
     difficulty: string;
-    jobDescription: string;
+    description: string;
     completed?: boolean;
     created?: boolean;
+    createdBy: string;
     saved?: boolean;
+    claimedJob?: boolean;
 }

@@ -13,75 +13,33 @@
     </div>
     
   </ion-toolbar>
-  <ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>Job Title:</ion-card-subtitle>
-    <ion-card-title>Title goes here</ion-card-title>
-  </ion-card-header>
+  
 
-  <ion-card-content>
-    <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
-    means and something
-    about the price details
-    -->
-    <ion-label>Difficulty: </ion-label>
-    <ion-label>Price: $$$</ion-label>
-  </ion-card-content>
-  <p>Like this job? Click to claim!</p>
-  <ion-button type="button" strong="true" size="small" routerLink="/select-job">Claim Job</ion-button>
-</ion-card>
-<ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>Job Title:</ion-card-subtitle>
-    <ion-card-title>Title goes here</ion-card-title>
-  </ion-card-header>
-
-  <ion-card-content>
-    <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
-    means and something
-    about the price details
-    -->
-    <ion-label>Difficulty: </ion-label>
-    <ion-label>Price: $$$</ion-label>
-  </ion-card-content>
-  <p>Like this job? Click to claim!</p>
-  <ion-button type="button" strong="true" size="small" routerLink="/select-job">Claim Job</ion-button>
-</ion-card>
-<ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>Job Title:</ion-card-subtitle>
-    <ion-card-title>Title goes here</ion-card-title>
-  </ion-card-header>
-
-  <ion-card-content>
-    <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
-    means and something
-    about the price details
-    -->
-    <ion-label>Difficulty: </ion-label>
-    <ion-label>Price: $$$</ion-label>
-  </ion-card-content>
-  <p>Like this job? Click to claim!</p>
-  <ion-button type="button" strong="true" size="small" routerLink="/select-job">Claim Job</ion-button>
-</ion-card>
-<ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>Job Title:</ion-card-subtitle>
-    <ion-card-title>Title goes here</ion-card-title>
-  </ion-card-header>
-
-  <ion-card-content>
-    <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
-    means and something
-    about the price details
-    -->
-    <ion-label>Difficulty: </ion-label>
-    <ion-label>Price: $$$</ion-label>
-  </ion-card-content>
-  <p>Like this job? Click to claim!</p>
-  <ion-button type="button" strong="true" size="small" routerLink="/select-job">Claim Job</ion-button>
-</ion-card>
 </ion-header>
+
+<ion-content>
+  <div *ngFor="let job of allJobs">
+    <ion-card *ngIf="!job.claimedJob">
+      <ion-card-header>
+        <ion-card-subtitle>Created By: {{job.createdBy}}</ion-card-subtitle>
+        <ion-card-title>{{job.title}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
+        means and something
+        about the price details
+        -->
+        <ion-label>Difficulty: {{job.difficulty}}</ion-label><br />
+        <ion-label>Price: {{job.price}}</ion-label>
+      </ion-card-content>
+      <p>Like this job? Click to claim!</p>
+      <ion-button type="button" strong="true" size="small" routerLink="/select-job" (click)="selectedJob(job)">Claim Job</ion-button>
+    </ion-card>
+  </div>
+  
+
+</ion-content>
 
 
 

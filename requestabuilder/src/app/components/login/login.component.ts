@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Person } from '../../models/Person.model';
 import { ApiServiceService } from './../../services/api-service.service';
+import { DataOutputService } from './../../services/data-output.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +12,22 @@ import { ApiServiceService } from './../../services/api-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private api: ApiServiceService) { };
+  constructor(private router: Router, private api: ApiServiceService, private output: DataOutputService) { };
   loginInfo: Person;
+  message: any;
   
 
   ngOnInit() {
-
   }
 
+  onInput() {
+   if (this.message) {
+    this.message = undefined;
+   }
+  }
+  
   submitForm(loginDetails: Person, loginForm: NgForm) {
 
-    //temp setup, will need to make certain length reqs for username and password
-    if (loginDetails.username === 'test' && loginDetails.password === 'test') {
       const login = {
         username: loginDetails.username,
         password: loginDetails.password
@@ -30,18 +35,20 @@ export class LoginComponent implements OnInit {
       console.log('LOGIN', login);
       this.api.checkCredentials(login).subscribe((data) => {
         console.log('success');
-        console.log('data', data);
-      }),(error => {
-        console.error('not able to send login creds');
+        if(data.message === 'Invalid Credentials. Try again or register') {
+          this.router.navigate(['login'])
+          this.message = data.message;
+          loginForm.resetForm();
+
+        } else {
+          console.log(data);
+          localStorage.setItem('user', data.name);
+          this.output.setJobData(data.jobs);
+          this.router.navigate(['home']);
+        }
       });
-      this.router.navigate(['home']);
+     
       loginForm.resetForm();
-    }
-    this.loginInfo = loginDetails;
-    console.log(loginDetails);
-    console.log(this.loginInfo);
-    this.loginInfo.username = '';
-    this.loginInfo.password = '';
   }
 
   redirectToRegistration(loginForm: NgForm) {
