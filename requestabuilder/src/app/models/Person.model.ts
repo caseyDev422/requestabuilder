@@ -8,5 +8,7 @@ export interface Person {
     email: string;
     username?: string;
     password: string;
-    associatedJobs: Job[];
+    createdJobs: Job[];
+    savedJobs: Job[];
+    completedJobs: Job[];
 }

@@ -63,7 +63,7 @@ export class ApiServiceService {
 
   claimJob(job: Job): Observable<any> {
     const url = environment.apiUrl + job.createdBy + '/' + job._id+ '/' + 'select-job';
-    return this.http.post(url, job);
+    return this.http.put(url, job);
   }
 
   getDefaultEndpoint = () => {

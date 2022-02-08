@@ -25,7 +25,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    associatedJobs: []
+    createdJobs: [],
+    savedJobs: [],
+    completedJobs: []
 });
 
 const User = mongoose.model('User', UserSchema);

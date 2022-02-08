@@ -23,7 +23,7 @@ router.get('/:user_name/my-jobs/completed', (req, res) => {
 router.get('/:user_name/my-jobs/created', async (req, res) => {
     // send back jobs with the user created
     const [user] = await User.find({ userName: req.params.user_name })
-    res.status(200).json(user.associatedJobs)
+    res.status(200).json(user.createdJobs)
 })
 
 router.get('/:user_name/my-jobs/saved', (req, res) => {
@@ -31,14 +31,25 @@ router.get('/:user_name/my-jobs/saved', (req, res) => {
     // these jobs are the ones that a user takes on
 })
 
-router.post('select-job', (req, res) => {
+router.put('/:user_name/:job_id/select-job', async (req, res) => {
     // accept request to set job to selected and send back verification
+    console.log(req.params.job_id)
+    const [job] = await Job.find({ _id: req.params.job_id })
+    const user = await User.findOne({ userName: req.params.user_name })
+    console.log(job)
+    if(!job) {
+        res.status(404).send("Error when Trying to claim job!")
+    } else {
+        await Job.updateOne({_id: req.params.job_id }, {$set: req.body })
+        user.savedJobs.push(job)
+        res.status(201).json({message: 'Job was Claimed! successfully!'})
+    }
 })
 router.post('/:user_name/create-job', async (req, res, next) => {
     const [user] = await User.find({ userName: req.params.user_name })
     console.log(user)
     const newJob = new Job(req.body)
-    user.associatedJobs.push(newJob)
+    user.createdJobs.push(newJob)
     newJob.createdBy = req.params.user_name
     
     try {
@@ -48,19 +59,12 @@ router.post('/:user_name/create-job', async (req, res, next) => {
     }
     
     try {
-        console.log(user.associatedJobs)
-        await user.updateOne({ associatedJobs: user.associatedJobs })
+        console.log(user.createdJobs)
+        await user.updateOne({ createdJobs: user.createdJobs })
     } catch (error) {
         next(error)
     }
     
-})
-router.post("/:user_name/:job_id/select-job", async (req, res, next) => {
-    console.log("HITTING PUT")
-    await Job.findByIdAndUpdate(req.params.job_id, {claimedJob: req.body.claimedJob})   
-    res.send({ message: "JOb clamied"})
-    
-
 })
 
 module.exports = router
