@@ -33,8 +33,9 @@
         <ion-label>Difficulty: {{job.difficulty}}</ion-label><br />
         <ion-label>Price: {{job.price}}</ion-label>
       </ion-card-content>
-      <p>Like this job? Click to claim!</p>
-      <ion-button type="button" strong="true" size="small" routerLink="/select-job" (click)="selectedJob(job)">Claim Job</ion-button>
+      <p *ngIf="job.createdBy !== getName()">Like this job? Click to claim!</p>
+      <p *ngIf="job.createdBy === getName()">Can't claim job since you are the creator!</p>
+      <ion-button *ngIf="job.createdBy !== getName()" type="button" strong="true" size="small" routerLink="/select-job" (click)="selectedJob(job)">Claim Job</ion-button>
     </ion-card>
   </div>
   

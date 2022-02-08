@@ -39,4 +39,8 @@ export class SeeJobsComponent implements OnInit {
 
   }
 
+  getName(): string {
+    return this.output.getName();
+  }
+
 }

@@ -28,4 +28,8 @@ export class DataOutputService {
   getSelectedJob(): Job {
     return this.jobSelected;
   }
+
+  getName(): string {
+    return localStorage.getItem('user');
+  }
 }

@@ -8,5 +8,4 @@ export interface Job {
     created?: boolean;
     createdBy: string;
     saved?: boolean;
-    claimedJob?: boolean;
 }
