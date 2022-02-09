@@ -8,6 +8,7 @@ router.get("/test-user", (req, res) => {
   res.send("testing the user router");
 });
 
+
 router.post("/register", async (req, res, next) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 8);

@@ -26,9 +26,12 @@ router.get('/:user_name/my-jobs/created', async (req, res) => {
     res.status(200).json(user.createdJobs)
 })
 
-router.get('/:user_name/my-jobs/saved', (req, res) => {
+router.get('/:user_name/my-jobs/saved', async (req, res) => {
     // send back jobs with the saved status
     // these jobs are the ones that a user takes on
+
+    const [user] = await User.find({ userName: req.params.user_name })
+    res.status(200).json(user.savedJobs)
 })
 
 router.put('/:user_name/:job_id/select-job', async (req, res) => {
@@ -37,11 +40,15 @@ router.put('/:user_name/:job_id/select-job', async (req, res) => {
     const [job] = await Job.find({ _id: req.params.job_id })
     const user = await User.findOne({ userName: req.params.user_name })
     console.log(job)
+    console.log(user);
     if(!job) {
         res.status(404).send("Error when Trying to claim job!")
     } else {
         await Job.updateOne({_id: req.params.job_id }, {$set: req.body })
         user.savedJobs.push(job)
+        console.log('savedJobs', user.savedJobs);
+        await user.updateOne({savedJobs: user.savedJobs})
+       // await User.updateOne({user_name: req.params.user_name}, {$set: req.body.savedJobs})
         res.status(201).json({message: 'Job was Claimed! successfully!'})
     }
 })
