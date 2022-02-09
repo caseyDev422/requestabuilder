@@ -4,10 +4,18 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
   <ion-card *ngFor="let job of savedJobs">
     <ion-card-header>
-      <ion-card-title>{{job.title}}</ion-card-title>
+      <div class="buttonDirection">
+      <ion-card-title class="col">{{job.title}}</ion-card-title>
+        <ion-button (click)="openPopover(job)" size="small" expand="block" fill="clear">
+        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+      
+      </div>
+      
     </ion-card-header>
   
     <ion-card-content>
@@ -15,6 +23,8 @@
       means and something
       about the price details
       -->
+      
+      
       <ion-label>{{job.difficulty}}</ion-label>
       <ion-label>Price: $ {{job.price}}</ion-label>
     </ion-card-content>
