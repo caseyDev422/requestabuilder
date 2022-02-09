@@ -56,13 +56,20 @@ export class ApiServiceService {
     return this.http.get(url);
   }
 
+  getSavedJobs(): Observable<any> {
+    const url = environment.apiUrl + this.getDefaultEndpoint() + "saved";
+
+   return this.http.get(url);
+  }
+
   getAllJobs(): Observable<any> {
     const url = environment.apiUrl + 'all-jobs';
     return this.http.get(url);
   }
 
   claimJob(job: Job): Observable<any> {
-    const url = environment.apiUrl + job.createdBy + '/' + job._id+ '/' + 'select-job';
+    const user = localStorage.getItem('user');
+    const url = environment.apiUrl + user + '/' + job._id+ '/' + 'select-job';
     return this.http.put(url, job);
   }
 
