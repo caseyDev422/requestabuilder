@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("./users-model");
 const tokenBuilder = require("./token-builder");
 const bcrypt = require("bcryptjs");
+const {checkUserName} = require('../middleware/users-middleware')
 
 router.get("/test-user", (req, res) => {
   res.send("testing the user router");
@@ -28,26 +29,17 @@ router.post("/register", async (req, res, next) => {
   console.log(req.body);
 });
 
-router.post("/login", async (req, res) => {
-  const [user] = await User.find({userName: req.body.username}).exec();
+router.post("/login", checkUserName, async (req, res) => {
   const { password } = req.body;
+  const { user } = req
   const token = tokenBuilder(req.body);
-  try {
-    bcrypt.compareSync(password, user.password);
-    res.status(200).json({ message: `Welcome back ${user.userName}.`, token: token, jobs: user.associatedJobs, name: user.userName})
-  } catch (error) {
-    
-    res.status(401).json({ message: "Invalid Credentials. Try again or register"})
-  }
   
-  // if(validUser){
-  //     res.status(200).json({ message: `Welcome back ${user.userName}.`, token: token, jobs: user.associatedJobs, name: user.userName})
-  // } else if (user.username == 'undefined' || user.password == 'undefined') {
-  //   res.status(401).json({ message: "Invalid Credentials!"})
-  // } else {
-  //   res.status(400).json({ message: "Error processing login. Try again or register"})
-  // }
-});
+   if (bcrypt.compareSync(password, user.password)){
+    res.status(200).json({ 
+      message: `Welcome back ${user.userName}.`, 
+      token: token, jobs: user.associatedJobs, 
+      name: user.userName})
+}});
 
 router.post("/profile", (req, res) => {
   //if wanting to change profile data
