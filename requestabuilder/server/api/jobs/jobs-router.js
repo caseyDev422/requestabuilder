@@ -48,7 +48,6 @@ router.put('/:user_name/:job_id/select-job', async (req, res) => {
         user.savedJobs.push(job)
         console.log('savedJobs', user.savedJobs);
         await user.updateOne({savedJobs: user.savedJobs})
-       // await User.updateOne({user_name: req.params.user_name}, {$set: req.body.savedJobs})
         res.status(201).json({message: 'Job was Claimed! successfully!'})
     }
 })
