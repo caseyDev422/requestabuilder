@@ -4,6 +4,7 @@ import { Job } from 'src/app/models/Job.model';
 import { ApiServiceService } from './../../../../services/api-service.service';
 import { PopoverMenuComponent } from './popover-menu/popover-menu.component';
 import { DataOutputService } from './../../../../services/data-output.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-saved',
@@ -13,7 +14,7 @@ import { DataOutputService } from './../../../../services/data-output.service';
 export class SavedPage implements OnInit {
   savedJobs: Job[] = null;
 
-  constructor(private api: ApiServiceService, private popOverController: PopoverController, private output: DataOutputService) { }
+  constructor(private api: ApiServiceService, private popOverController: PopoverController, private output: DataOutputService, private router: Router) { }
 
   ngOnInit() {
 
@@ -46,7 +47,7 @@ export class SavedPage implements OnInit {
         this.api.updateJobDetails(job).subscribe(() => {
           this.api.getSavedJobs().subscribe();
         })
-      }
+      } else if (chosenOption == 'Back to home') {this.router.navigate(['/home'])}
     })
 
     return await popover.present();
