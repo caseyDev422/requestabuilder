@@ -3,14 +3,14 @@ const router = express.Router();
 const User = require("./users-model");
 const tokenBuilder = require("./token-builder");
 const bcrypt = require("bcryptjs");
-const {checkUserName} = require('../middleware/users-middleware')
+const {checkUserName, checkUserNameExists,checkEmailExists } = require('../middleware/users-middleware')
 
 router.get("/test-user", (req, res) => {
   res.send("testing the user router");
 });
 
 
-router.post("/register", async (req, res, next) => {
+router.post("/register", checkEmailExists, checkUserName ,async (req, res, next) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 8);
   user.password = hash;
