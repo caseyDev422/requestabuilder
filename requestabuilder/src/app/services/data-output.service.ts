@@ -9,6 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class DataOutputService {
  jobs: Job[] | [];
  jobSelected: Job;
+ private popoverMenuJob: Job;
 
  constructor() { }
 
@@ -31,5 +32,13 @@ export class DataOutputService {
 
   getName(): string {
     return localStorage.getItem('user');
+  }
+
+  setPopoverMenuJob(job: Job) {
+    this.popoverMenuJob = job;
+  }
+
+  getPopoverMenuJob(): Job {
+    return this.popoverMenuJob;
   }
 }

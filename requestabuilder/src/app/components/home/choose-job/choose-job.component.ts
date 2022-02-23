@@ -18,11 +18,11 @@ export class ChooseJobComponent implements OnInit {
     this.jobSelected = this.output.getSelectedJob();
   }
 
-  claimJob(): void {
+  updateJobDetails(): void {
     this.jobSelected.saved = true;
 
-    this.api.claimJob(this.jobSelected).subscribe(() => {
-      this.route.navigate(['/home'])
+    this.api.updateJobDetails(this.jobSelected).subscribe(() => {
+      this.route.navigate(['/home']);
     });
   }
 
