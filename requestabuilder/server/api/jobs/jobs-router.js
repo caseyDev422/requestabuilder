@@ -34,7 +34,7 @@ router.get('/:user_name/my-jobs/saved', async (req, res) => {
     res.status(200).json(user.savedJobs)
 })
 
-router.put('/:user_name/:job_id/select-job', async (req, res) => {
+router.put(`/:user_name/:job_id/update-saved`, async (req, res) => {
     // accept request to set job to selected and send back verification
     console.log(req.params.job_id)
     const [job] = await Job.find({ _id: req.params.job_id })
@@ -45,7 +45,13 @@ router.put('/:user_name/:job_id/select-job', async (req, res) => {
         res.status(404).send("Error when Trying to claim job!")
     } else {
         await Job.updateOne({_id: req.params.job_id }, {$set: req.body })
-        user.savedJobs.push(job)
+        if (job.saved) {
+          user.savedJobs.push(job)  
+        } else {
+            user.savedJobs.filter(job => {
+                return !job.saved
+            })
+        }
         console.log('savedJobs', user.savedJobs);
         await user.updateOne({savedJobs: user.savedJobs})
        // await User.updateOne({user_name: req.params.user_name}, {$set: req.body.savedJobs})

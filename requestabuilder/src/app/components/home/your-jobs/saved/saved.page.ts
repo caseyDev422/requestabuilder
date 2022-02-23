@@ -25,6 +25,7 @@ export class SavedPage implements OnInit {
 
   async openPopover(job: Job) {
     this.output.setPopoverMenuJob(job);
+    console.log('job', job);
 
     const popover = await this.popOverController.create({
       component: PopoverMenuComponent
@@ -37,10 +38,14 @@ export class SavedPage implements OnInit {
 
       if (chosenOption === 'Remove job') {
         const job = this.output.getPopoverMenuJob();
-        console.log('job chosen', job);
+        job.saved = false;
+        console.log('saved should be false', job);
         /**
          * implement logic to remove job and set saved to false or delete from job
          */
+        this.api.updateJobDetails(job).subscribe(() => {
+          this.api.getSavedJobs().subscribe();
+        })
       }
     })
 

@@ -67,9 +67,10 @@ export class ApiServiceService {
     return this.http.get(url);
   }
 
-  claimJob(job: Job): Observable<any> {
+  updateJobDetails(job: Job): Observable<any> {
     const user = localStorage.getItem('user');
-    const url = environment.apiUrl + user + '/' + job._id+ '/' + 'select-job';
+    const url = environment.apiUrl + user + '/' + job._id+ '/' + 'update-saved';
+    
     return this.http.put(url, job);
   }
 
