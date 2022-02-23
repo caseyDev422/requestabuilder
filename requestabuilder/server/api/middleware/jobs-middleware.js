@@ -31,10 +31,7 @@ const updateJobAndUserStatus = async (req, res, next) => {
   }
   console.log("savedJobs", user.savedJobs);
   await user.updateOne({ savedJobs: user.savedJobs });
-<<<<<<< HEAD
   next()
-=======
->>>>>>> 249d4269f53720a38734800bb78f0e691157c2f0
 };
 
 module.exports = { checkJobExists, updateJobAndUserStatus };
