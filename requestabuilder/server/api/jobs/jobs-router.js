@@ -2,7 +2,10 @@ const express = require("express");
 const router = express.Router();
 const User = require("../users/users-model");
 const Job = require("./jobs-model");
+<<<<<<< HEAD
 const mongoose = require("mongoose");
+=======
+>>>>>>> 249d4269f53720a38734800bb78f0e691157c2f0
 const {
   checkJobExists,
   updateJobAndUserStatus,
@@ -41,8 +44,8 @@ router.put(
   `/:user_name/:job_id/update-saved`,
   checkJobExists,
   updateJobAndUserStatus,
-  async (req, res) => {
-    res.status(201).json({ message: "Job was Claimed! successfully!" });
+  (req, res) => {
+    res.status(201).json({ message: "Job was Updated successfully!" });
   }
 );
 router.post("/:user_name/create-job", async (req, res, next) => {
