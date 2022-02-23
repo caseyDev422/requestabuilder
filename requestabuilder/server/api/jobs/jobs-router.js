@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const User = require("../users/users-model")
 const Job = require("./jobs-model")
+const mongoose = require('mongoose')
 
 
 //will need to add queryParams for filtered jobs
@@ -45,12 +46,26 @@ router.put(`/:user_name/:job_id/update-saved`, async (req, res) => {
         res.status(404).send("Error when Trying to claim job!")
     } else {
         await Job.updateOne({_id: req.params.job_id }, {$set: req.body })
-        if (job.saved) {
+        console.log('job in BE', req.body);
+        if (req.body.saved) {
           user.savedJobs.push(job)  
         } else {
-            user.savedJobs.filter(job => {
-                return !job.saved
-            })
+            for (let i = 0; i < user.savedJobs.length; i++) {
+                const id = mongoose.Types.ObjectId(req.params.job_id);
+                if (user.savedJobs[i]._id.equals(id)) {
+                    console.log('MATCH!');
+                    user.savedJobs.splice(0, i + 1);
+                    break;
+                }
+            }
+            // const index = user.savedJobs.indexOf(mongoose.Types.ObjectId(req.params.job_id));
+            // console.log('JOB_ID', job._id);
+            // console.log('ID2', mongoose.Types.ObjectId(req.params.job_id));
+            // console.log('TYPE', typeof(req.params.job_id));
+            // console.log('index', index);
+            // user.savedJobs.filter(job => {
+            //     return req.body.saved
+            // })
         }
         console.log('savedJobs', user.savedJobs);
         await user.updateOne({savedJobs: user.savedJobs})
