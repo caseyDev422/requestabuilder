@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 //will need to add queryParams for filtered jobs
 router.get('/all-jobs', async(req, res) => {
-    // to send back all jobs
+    // to send back all jobss
     const jobs = await Job.find()
     res.status(200).json(jobs)
 
