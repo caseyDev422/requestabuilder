@@ -2,10 +2,6 @@ const express = require("express");
 const router = express.Router();
 const User = require("../users/users-model");
 const Job = require("./jobs-model");
-<<<<<<< HEAD
-const mongoose = require("mongoose");
-=======
->>>>>>> 249d4269f53720a38734800bb78f0e691157c2f0
 const {
   checkJobExists,
   updateJobAndUserStatus,
