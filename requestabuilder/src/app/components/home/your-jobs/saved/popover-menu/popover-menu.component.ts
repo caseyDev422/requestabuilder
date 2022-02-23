@@ -10,7 +10,8 @@ export class PopoverMenuComponent implements OnInit {
   menuOptions = [
     'Remove job',
     'Give to someone else (WIP)',
-    'Back to home'
+    'Back to home', 
+    'Mark as complete'
   ]
 
   constructor( private poc: PopoverController) { }
