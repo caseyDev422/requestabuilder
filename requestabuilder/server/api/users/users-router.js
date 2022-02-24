@@ -10,7 +10,7 @@ router.get("/test-user", (req, res) => {
 });
 
 
-router.post("/register", checkEmailExists, checkUserName ,async (req, res, next) => {
+router.post("/register", checkEmailExists, checkUserNameExists, async (req, res, next) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 8);
   user.password = hash;
