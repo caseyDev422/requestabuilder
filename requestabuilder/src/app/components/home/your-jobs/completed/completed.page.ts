@@ -10,6 +10,7 @@ export class CompletedPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
