@@ -13,7 +13,6 @@ const checkJobExists = async (req, res, next) => {
 };
 
 const updateJobAndUserStatus = async (req, res, next) => {
-  let newJobsArr = []
   const { job } = req;
   const user = await User.findOne({ userName: req.params.user_name });
   await Job.updateOne({ _id: req.params.job_id }, { $set: req.body });
@@ -21,13 +20,13 @@ const updateJobAndUserStatus = async (req, res, next) => {
     job.saved = req.body.saved;
     user.savedJobs.push(job);
   } else {
-     newJobsArr = user.savedJobs.filter(
+    const newJobsArr = user.savedJobs.filter(
       (savedJob) => savedJob._id != req.params.job_id
     );
     user.savedJobs = newJobsArr
+    req.updatedJobs = newJobsArr
   }
   await user.updateOne({ savedJobs: user.savedJobs });
-  req.updatedJobs = newJobsArr
   next();
 };
 
