@@ -44,8 +44,8 @@ export class SavedPage implements OnInit {
         /**
          * implement logic to remove job and set saved to false or delete from job
          */
-        this.api.updateJobDetails(job).subscribe(() => {
-          this.api.getSavedJobs().subscribe();
+        this.api.updateJobDetails(job).subscribe(jobs => {
+         this.savedJobs = jobs.updatedJobs;
         })
       } else if (chosenOption == 'Back to home') {this.router.navigate(['/home'])}
     })

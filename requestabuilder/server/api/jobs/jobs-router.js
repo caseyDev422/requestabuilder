@@ -18,8 +18,10 @@ router.get("/profile", (req, res) => {
   // to render profile data to screen
 });
 
-router.get("/:user_name/my-jobs/completed", (req, res) => {
+router.get("/:user_name/my-jobs/completed", async (req, res) => {
   // send back jobs with the completion status
+  const [user] = await User.find({ userName: req.params.user_name })
+  res.status(200).json(user.completedJobs)
 });
 
 router.get("/:user_name/my-jobs/created", async (req, res) => {
@@ -41,7 +43,8 @@ router.put(
   checkJobExists,
   updateJobAndUserStatus,
   (req, res) => {
-    res.status(201).json({ message: "Job was Updated successfully!" });
+    console.log("UPDATED JOBS:", req.updatedJobs)
+    res.status(201).json({ message: "Job was Updated successfully!", updatedJobs: req.updatedJobs });
   }
 );
 router.post("/:user_name/create-job", async (req, res, next) => {

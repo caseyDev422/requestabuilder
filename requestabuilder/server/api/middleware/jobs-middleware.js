@@ -1,6 +1,6 @@
 const User = require("../users/users-model");
 const Job = require("../jobs/jobs-model");
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const checkJobExists = async (req, res, next) => {
   const [job] = await Job.find({ _id: req.params.job_id });
@@ -13,6 +13,7 @@ const checkJobExists = async (req, res, next) => {
 };
 
 const updateJobAndUserStatus = async (req, res, next) => {
+  let newJobsArr = []
   const { job } = req;
   const user = await User.findOne({ userName: req.params.user_name });
   await Job.updateOne({ _id: req.params.job_id }, { $set: req.body });
@@ -21,17 +22,16 @@ const updateJobAndUserStatus = async (req, res, next) => {
     job.saved = req.body.saved;
     user.savedJobs.push(job);
   } else {
-    for (let i = 0; i < user.savedJobs.length; i++) {
-      const id = mongoose.Types.ObjectId(req.params.job_id);
-      if (user.savedJobs[i]._id.equals(id)) {
-        user.savedJobs.splice(0, i + 1);
-        break;
-      }
-    }
+     newJobsArr = user.savedJobs.filter(
+      (savedJob) => savedJob._id != req.params.job_id
+    );
+    console.log(newJobsArr)
+    user.savedJobs = newJobsArrgi
   }
   console.log("savedJobs", user.savedJobs);
   await user.updateOne({ savedJobs: user.savedJobs });
-  next()
+  req.updatedJobs = newJobsArr
+  next();
 };
 
 module.exports = { checkJobExists, updateJobAndUserStatus };
