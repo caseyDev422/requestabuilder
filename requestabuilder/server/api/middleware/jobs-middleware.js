@@ -24,8 +24,7 @@ const updateJobAndUserStatus = async (req, res, next) => {
      newJobsArr = user.savedJobs.filter(
       (savedJob) => savedJob._id != req.params.job_id
     );
-    console.log(newJobsArr)
-    user.savedJobs = newJobsArrgi
+    user.savedJobs = newJobsArr
   }
   await user.updateOne({ savedJobs: user.savedJobs });
   req.updatedJobs = newJobsArr
