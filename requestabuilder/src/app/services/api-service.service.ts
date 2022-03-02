@@ -62,6 +62,12 @@ export class ApiServiceService {
    return this.http.get(url);
   }
 
+  getCompletedJobs(): Observable<any> {
+    const url = environment.apiUrl + this.getDefaultEndpoint() + "completed";
+
+    return this.http.get(url);
+  }
+
   getAllJobs(): Observable<any> {
     const url = environment.apiUrl + 'all-jobs';
     return this.http.get(url);

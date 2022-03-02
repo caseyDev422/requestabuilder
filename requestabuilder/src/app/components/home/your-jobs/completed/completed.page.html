@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Completed</ion-title>
+    <ion-title>Saved</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content>
+  <ion-card *ngFor="let job of completedJobs">
+    <ion-card-header>
+      <div class="buttonDirection">
+      <ion-card-title class="col">{{job.title}}</ion-card-title>
+        
+      
+      </div>
+      
+    </ion-card-header>
+  
+    <ion-card-content>
+      <!-- May include some type of info icon to show a pop up of a brief description of what difficulty 
+      means and something
+      about the price details
+      -->
+      
+      
+      <ion-label>{{job.difficulty}}</ion-label>
+      <ion-label>Price: $ {{job.price}}</ion-label>
+    </ion-card-content>
+    <p>{{job.description}}</p>
+  </ion-card>
+  
 </ion-content>
