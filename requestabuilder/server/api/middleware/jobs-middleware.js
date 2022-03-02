@@ -17,7 +17,6 @@ const updateJobAndUserStatus = async (req, res, next) => {
   const { job } = req;
   const user = await User.findOne({ userName: req.params.user_name });
   await Job.updateOne({ _id: req.params.job_id }, { $set: req.body });
-  console.log("job in BE", req.body);
   if (req.body.saved) {
     job.saved = req.body.saved;
     user.savedJobs.push(job);
@@ -28,7 +27,6 @@ const updateJobAndUserStatus = async (req, res, next) => {
     console.log(newJobsArr)
     user.savedJobs = newJobsArrgi
   }
-  console.log("savedJobs", user.savedJobs);
   await user.updateOne({ savedJobs: user.savedJobs });
   req.updatedJobs = newJobsArr
   next();

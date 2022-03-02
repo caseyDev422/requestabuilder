@@ -43,13 +43,11 @@ router.put(
   checkJobExists,
   updateJobAndUserStatus,
   (req, res) => {
-    console.log("UPDATED JOBS:", req.updatedJobs)
     res.status(201).json({ message: "Job was Updated successfully!", updatedJobs: req.updatedJobs });
   }
 );
 router.post("/:user_name/create-job", async (req, res, next) => {
   const [user] = await User.find({ userName: req.params.user_name });
-  console.log(user);
   const newJob = new Job(req.body);
   user.createdJobs.push(newJob);
   newJob.createdBy = req.params.user_name;
