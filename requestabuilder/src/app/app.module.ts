@@ -17,6 +17,7 @@ import { FindJobComponent } from './components/home/find-job/find-job.component'
 import { SeeJobsComponent } from './components/home/see-jobs/see-jobs.component';
 import { YourJobsComponent } from './components/home/your-jobs/your-jobs.component';
 import { SettingsComponent } from './components/home/settings/settings.component';
+import { ToggleThemeComponent } from './components/toggle-theme/toggle-theme.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -33,11 +34,12 @@ import { HttpClientModule } from '@angular/common/http';
     FindJobComponent,
     SeeJobsComponent,
     YourJobsComponent,
-    SettingsComponent
+    SettingsComponent,
+    ToggleThemeComponent
   ],
   entryComponents: [],
   imports: [
-    BrowserModule, 
+  BrowserModule, 
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
