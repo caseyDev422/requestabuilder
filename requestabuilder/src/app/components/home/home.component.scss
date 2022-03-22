@@ -39,5 +39,29 @@ ion-header{
 
 .myJobsBtn {
     position: relative;
-    left: 38px;
+    left: 37px;
+}
+
+.md {
+    .myJobsBtn {
+        position: relative;
+        left: 27px;
+    }
+
+    .seeJobsBtn {
+        position: relative;
+        top: 4px;
+    }
+
+    .noMargin {
+        margin: 0 !important;
+        position: relative;
+        left: 1px;
+    }
+
+    .title {
+       text-align: center;
+       padding-right: 4rem;
+    }
+    
 }
